@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.face_main);
 
-        // Spinner must be connected to array of Strings
+        // Spinner must be connected to array of Strings (called hair_styles)
         Spinner hairStyles = findViewById(R.id.styleSpinner);
 
         /**

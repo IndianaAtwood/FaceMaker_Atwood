@@ -21,6 +21,10 @@ public class Face {
         randomize();
     }
 
+    /**
+     * Randomizes the private variables between integers 0-2.
+     */
+
     private void randomize() {
         // each variable is given an integer between 0-2
         skinColor = rand.nextInt(3);
@@ -38,6 +42,8 @@ public class Face {
     }
 
     public void onDraw(Canvas canvas) {
+        drawHair();
+        drawEyes();
         // will add code for Part B
     }
 }

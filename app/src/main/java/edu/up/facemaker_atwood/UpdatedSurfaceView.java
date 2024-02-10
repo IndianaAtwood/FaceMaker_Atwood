@@ -8,7 +8,7 @@ import android.graphics.Canvas;
 public class UpdatedSurfaceView extends SurfaceView {
     public UpdatedSurfaceView(Context c, AttributeSet attr) {
         super(c, attr);
-        // add other code
+        // add additional code
     }
 
     @Override
