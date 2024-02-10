@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">FaceMaker_Atwood</string>
+
+    <string-array name="hair_styles">
+        <item>Straight</item>
+        <item>Wavy</item>
+        <item>Curly</item>
+    </string-array>
 </resources>
