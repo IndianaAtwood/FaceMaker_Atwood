@@ -6,14 +6,14 @@ import java.util.Random;
 /**
  * @author Indiana Atwood
  *
- * @version February 10, 2024
+ * @version February 15, 2024
  */
 public class Face {
     private int skinColor;
     private int eyeColor;
     private int hairColor;
     private int hairStyle;
-    private Random rand;
+    private Random rand = new Random();
 
     public Face() {
         // private variables are given random values using Random class
