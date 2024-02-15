@@ -17,20 +17,22 @@ public class Face {
 
     public Face() {
         // private variables are given random values using Random class
-        rand = new Random();
-        randomize();
+        skinColor = randomize();
+        eyeColor = randomize();
+        hairColor = randomize();
+        hairStyle = rand.nextInt(3);
+
+        red = rand.nextInt(256);
+        green = rand.nextInt(256);
+        blue = rand.nextInt(256);
     }
 
     /**
-     * Randomizes the private variables between integers 0-2.
+     * Sets each integer to a random ARGB value.
      */
-
-    private void randomize() {
-        // each variable is given an integer between 0-2
-        skinColor = rand.nextInt(3);
-        eyeColor = rand.nextInt(3);
-        hairColor = rand.nextInt(3);
-        hairStyle = rand.nextInt(3);
+    private int randomize() {
+        return Color.argb(255, rand.nextInt(256),
+                         rand.nextInt(256), rand.nextInt(256));
     }
 
     private void drawHair() {
