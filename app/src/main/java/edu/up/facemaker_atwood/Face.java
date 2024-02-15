@@ -2,6 +2,7 @@ package edu.up.facemaker_atwood;
 
 import android.graphics.Canvas;
 import java.util.Random;
+import android.graphics.Color;
 
 /**
  * @author Indiana Atwood
@@ -21,10 +22,6 @@ public class Face {
         eyeColor = randomize();
         hairColor = randomize();
         hairStyle = rand.nextInt(3);
-
-        red = rand.nextInt(256);
-        green = rand.nextInt(256);
-        blue = rand.nextInt(256);
     }
 
     /**
