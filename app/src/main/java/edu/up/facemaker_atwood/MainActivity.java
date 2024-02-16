@@ -9,7 +9,7 @@ import android.widget.Spinner;
 /**
  * @author Indiana Atwood
  *
- * @version February 10, 2024
+ * @version February 15, 2024
  */
 public class MainActivity extends AppCompatActivity {
     private Face originalFace;
@@ -19,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
         originalFace = new Face();
     }
 
+    /**
+     * Creates a dropdown menu for the hair type Spinner.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
