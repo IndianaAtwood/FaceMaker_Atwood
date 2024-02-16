@@ -16,6 +16,11 @@ public class Face {
     private int hairStyle;
     private Random rand = new Random();
 
+    /**
+     * Sets each color integer to a random ARGB value.
+     * Sets hairStyle to a random int between 0-2,
+     *    which will correstpond to different hair types.
+     */
     public Face() {
         // private variables are given random values using Random class
         skinColor = randomize();
@@ -25,7 +30,7 @@ public class Face {
     }
 
     /**
-     * Sets each integer to a random ARGB value.
+     * Generates a random ARGB value (with full opacity).
      */
     private int randomize() {
         return Color.argb(255, rand.nextInt(256),
