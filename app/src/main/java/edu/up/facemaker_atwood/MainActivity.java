@@ -3,7 +3,11 @@ package edu.up.facemaker_atwood;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 
 /**
@@ -14,15 +18,25 @@ import android.widget.Spinner;
 public class MainActivity extends AppCompatActivity {
     private Face originalFace;
 
-    public MainActivity() {
-        // the face is created upon running the program
-        originalFace = new Face();
+    public Face getFace() {
+        return originalFace;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.face_main);
+        originalFace = findViewById(R.id.face);
+
+        EventHandler handler = new EventHandler(this);
+
+        SeekBar redSeek = findViewById(R.id.redSeek);
+        SeekBar greenSeek = findViewById(R.id.greenSeek);
+        SeekBar blueSeek = findViewById(R.id.blueSeek);
+
+        redSeek.setOnSeekBarChangeListener(handler);
+        greenSeek.setOnSeekBarChangeListener(handler);
+        blueSeek.setOnSeekBarChangeListener(handler);
 
         // Spinner must be connected to array of Strings (called hair_styles)
         Spinner hairStyles = findViewById(R.id.styleSpinner);
@@ -46,5 +60,9 @@ public class MainActivity extends AppCompatActivity {
 
         // connects the Spinner to the adapter (and the values)
         hairStyles.setAdapter(adapter);
+
+        RadioGroup buttonChoices = findViewById(R.id.radioButtons);
+        buttonChoices.setOnCheckedChangeListener(handler);
+
     }
 }

@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <edu.up.facemaker_atwood.UpdatedSurfaceView
-        android:id="@+id/demoCanvas"
+    <edu.up.facemaker_atwood.Face
+        android:id="@+id/face"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"/>
@@ -13,11 +13,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_weight="1"
             android:padding="5dp">
@@ -25,39 +26,45 @@
             <TextView
                 android:id="@+id/red"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:text="Red Value:" />
 
             <SeekBar
                 android:id="@+id/redSeek"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:min="0"
                 android:max="255" />
 
             <TextView
                 android:id="@+id/green"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:text="Green Value:" />
 
             <SeekBar
                 android:id="@+id/greenSeek"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:min="0"
                 android:max="255" />
 
             <TextView
                 android:id="@+id/blue"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:text="Blue Value:" />
 
             <SeekBar
                 android:id="@+id/blueSeek"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:min="0"
                 android:max="255" />
         </LinearLayout>
@@ -75,6 +82,7 @@
                 android:text="Facial Feature:" />
 
             <RadioGroup
+                android:id="@+id/radioButtons"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -82,7 +90,8 @@
                 <RadioButton android:id="@+id/hairButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hair"/>
+                    android:text="Hair"
+                    android:checked="true"/>
 
                 <RadioButton android:id="@+id/skinButton"
                     android:layout_width="wrap_content"
