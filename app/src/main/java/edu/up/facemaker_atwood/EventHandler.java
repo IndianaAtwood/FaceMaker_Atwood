@@ -8,6 +8,11 @@ import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 
+/**
+ * @author Indiana Atwood
+ *
+ * @version February 22, 2024
+ */
 public class EventHandler implements SeekBar.OnSeekBarChangeListener,
              RadioGroup.OnCheckedChangeListener,
              AdapterView.OnItemSelectedListener,
@@ -104,10 +109,7 @@ public class EventHandler implements SeekBar.OnSeekBarChangeListener,
 
     @Override
     public void onClick(View v) {
-        face.hairColor = face.randomizeColor();
-        face.skinColor = face.randomizeColor();
-        face.eyeColor = face.randomizeColor();
-        face.hairStyle = face.rand.nextInt(3);
+        face.randomizeVariables();
 
         if (buttonChoice == 0) {
             setSeekBars(face.hairColor);

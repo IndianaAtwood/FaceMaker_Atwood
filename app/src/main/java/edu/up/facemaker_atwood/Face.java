@@ -13,7 +13,7 @@ import java.util.Random;
 /**
  * @author Indiana Atwood
  *
- * @version February 10, 2024
+ * @version February 22, 2024
  */
 public class Face extends SurfaceView {
     public int skinColor;
@@ -39,6 +39,10 @@ public class Face extends SurfaceView {
         rand = new Random();
 
         // private variables are given random values using Random class
+        randomizeVariables();
+    }
+
+    public void randomizeVariables() {
         skinColor = randomizeColor();
         eyeColor = randomizeColor();
         hairColor = randomizeColor();
@@ -48,7 +52,7 @@ public class Face extends SurfaceView {
     /**
      * Randomizes the private variables between integers 0-2.
      */
-    public int randomizeColor() {
+    private int randomizeColor() {
         return Color.argb(255, rand.nextInt(256),
                          rand.nextInt(256), rand.nextInt(256));
     }

@@ -12,7 +12,7 @@ import android.widget.Spinner;
 /**
  * @author Indiana Atwood
  *
- * @version February 15, 2024
+ * @version February 22, 2024
  */
 public class MainActivity extends AppCompatActivity {
     private Face originalFace;
