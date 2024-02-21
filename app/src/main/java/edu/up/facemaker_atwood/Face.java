@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.SurfaceView;
 
@@ -19,57 +20,106 @@ public class Face extends SurfaceView {
     public int eyeColor;
     public int hairColor;
     public int hairStyle;
-    public int buttonChoice;
-    private Random rand = new Random();
+    public Random rand;
 
     /* Paints that we'll use to draw the face */
     Paint skinARGB = new Paint();
     Paint eyeARGB = new Paint();
     Paint hairARGB = new Paint();
+    Paint smile = new Paint();
 
-    public static final float faceLeft = 100.0f;
-    public static final float faceTop = 50.0f;
+    public final float faceLeft = 750.0f;
+    public final float faceTop = 100.0f;
+    public final float faceWidth = 500.0f;
+    public final float faceHeight = 600.0f;
 
     public Face(Context context, AttributeSet attrs) {
         super(context, attrs);
         setWillNotDraw(false);
+        rand = new Random();
 
         // private variables are given random values using Random class
-        skinColor = randomize();
-        eyeColor = randomize();
-        hairColor = randomize();
+        skinColor = randomizeColor();
+        eyeColor = randomizeColor();
+        hairColor = randomizeColor();
         hairStyle = rand.nextInt(3);
     }
 
     /**
      * Randomizes the private variables between integers 0-2.
      */
-
-    private int randomize() {
+    public int randomizeColor() {
         return Color.argb(255, rand.nextInt(256),
                          rand.nextInt(256), rand.nextInt(256));
     }
 
-    private void drawHair() {
+    private void drawHair(Canvas c) {
         // will add code for Part B
+        if (hairStyle == 0) {
+            c.drawArc(faceLeft, faceTop, faceLeft + faceWidth,
+                    faceTop + 2*(faceHeight/3), 180, 180, true, hairARGB);
+            c.drawRect(faceLeft, faceTop + faceHeight/3,
+                    faceLeft + faceWidth/5, faceTop + 2*(faceHeight/3), hairARGB);
+            c.drawRect(faceLeft + 4*(faceWidth/5), faceTop + faceHeight/3,
+                    faceLeft + faceWidth, faceTop + 2*(faceHeight/3), hairARGB);
+        }
+        else if (hairStyle == 1) {
+            Path spiky = new Path();
+            spiky.moveTo(faceLeft + 25.0f, faceTop + 100.0f);
+            spiky.lineTo(faceLeft + 75.0f, faceTop + 75.0f);
+            spiky.lineTo(faceLeft + 50.0f, faceTop + 50.0f);
+            spiky.lineTo(faceLeft + 100.0f, faceTop + 50.0f);
+            spiky.lineTo(faceLeft + 100.0f, faceTop);
+            spiky.lineTo(faceLeft + 150.0f, faceTop - 50.0f);
+            spiky.lineTo(faceLeft + 195.0f, faceTop - 25.0f);
+            spiky.lineTo(faceLeft + 350.0f, faceTop - 50.0f);
+            spiky.lineTo(faceLeft + 400.0f, faceTop - 25.0f);
+            spiky.lineTo(faceLeft + 400.0f, faceTop);
+            spiky.lineTo(faceLeft + 450.0f, faceTop);
+            spiky.lineTo(faceLeft + 425.0f, faceTop + 25.0f);
+            spiky.lineTo(faceLeft + 475.0f, faceTop + 50.0f);
+            spiky.lineTo(faceLeft + 450.0f, faceTop + 50.0f);
+            spiky.lineTo(faceLeft + 425.0f, faceTop + 75.0f);
+            spiky.lineTo(faceLeft + 475.0f, faceTop + 100.0f);
+            spiky.lineTo(faceLeft + 300.0f, faceTop + 75.0f);
+            spiky.lineTo(faceLeft + 300.0f, faceTop + 100.0f);
+            spiky.lineTo(faceLeft + 150.0f, faceTop + 55.0f);
+
+            c.drawPath(spiky, hairARGB);
+        }
+        else if (hairStyle == 2) {
+            c.drawCircle(faceLeft + 50.0f, faceTop + 100.0f, 75.0f, hairARGB);
+            c.drawCircle(faceLeft + 150.0f, faceTop + 75.0f, 75.0f, hairARGB);
+            c.drawCircle(faceLeft + 200.0f, faceTop + 50.0f, 75.0f, hairARGB);
+            c.drawCircle(faceLeft + 250.0f, faceTop + 50.0f, 75.0f, hairARGB);
+            c.drawCircle(faceLeft + 350.0f, faceTop + 75.0f, 75.0f, hairARGB);
+            c.drawCircle(faceLeft + 450.0f, faceTop + 125.0f, 75.0f, hairARGB);
+        }
     }
 
-    private void drawEyes() {
+    private void drawEyes(Canvas c) {
         // will add code for Part B
+        c.drawOval(faceLeft + faceWidth/3, faceTop + faceHeight/4,
+                  faceLeft + faceWidth/5, faceTop + faceHeight/2, eyeARGB);
+        c.drawOval(faceLeft + 2*(faceWidth/3), faceTop + faceHeight/4,
+                  faceLeft + 4*(faceWidth/5), faceTop + faceHeight/2, eyeARGB);
     }
 
     public void onDraw(Canvas canvas) {
         hairARGB.setColor(hairColor);
         skinARGB.setColor(skinColor);
         eyeARGB.setColor(eyeColor);
+        smile.setColor(0xFFFFFFFF);
 
-        canvas.drawRect(0.0f, 0.0f, 10000.0f, 10000.0f, hairARGB);
+        canvas.drawOval(faceLeft, faceTop, faceLeft + faceWidth,
+                 faceTop + faceHeight, skinARGB);
 
-        canvas.drawOval(faceLeft, faceTop, faceLeft + 550.0f, faceTop + 600.0f, skinARGB);
-        canvas.drawOval(faceLeft + 1100.0f, faceTop, faceLeft + 550.0f, faceTop + 600.0f, eyeARGB);
+        canvas.drawArc(faceLeft + faceWidth/3, faceTop + 2*(faceHeight/3),
+                      faceLeft + 2*(faceWidth/3), faceTop + 4*(faceHeight/5),
+                  0,180,true,smile);
 
-        drawHair();
-        drawEyes();
+        drawEyes(canvas);
+        drawHair(canvas);
         // will add code for Part B
     }
 }

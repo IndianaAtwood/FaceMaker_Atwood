@@ -3,9 +3,8 @@ package edu.up.facemaker_atwood;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
-import android.widget.RadioButton;
+import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -60,9 +59,13 @@ public class MainActivity extends AppCompatActivity {
 
         // connects the Spinner to the adapter (and the values)
         hairStyles.setAdapter(adapter);
+        hairStyles.setOnItemSelectedListener(handler);
 
         RadioGroup buttonChoices = findViewById(R.id.radioButtons);
         buttonChoices.setOnCheckedChangeListener(handler);
+
+        Button random = findViewById(R.id.randomFace);
+        random.setOnClickListener(handler);
 
     }
 }

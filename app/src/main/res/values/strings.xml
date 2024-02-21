@@ -3,7 +3,7 @@
 
     <string-array name="hair_styles">
         <item>Straight</item>
-        <item>Wavy</item>
+        <item>Spiky</item>
         <item>Curly</item>
     </string-array>
 </resources>
