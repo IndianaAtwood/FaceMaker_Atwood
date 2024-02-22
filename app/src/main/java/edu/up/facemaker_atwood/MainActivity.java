@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Creates a dropdown menu for the hair type Spinner.
+     *
+     * @param savedInstanceState is unused in this code.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         SeekBar greenSeek = findViewById(R.id.greenSeek);
         SeekBar blueSeek = findViewById(R.id.blueSeek);
 
+        // each SeekBar is set to the same ChangeListener
         redSeek.setOnSeekBarChangeListener(handler);
         greenSeek.setOnSeekBarChangeListener(handler);
         blueSeek.setOnSeekBarChangeListener(handler);
